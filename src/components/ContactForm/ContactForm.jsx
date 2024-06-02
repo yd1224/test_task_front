@@ -8,7 +8,11 @@ import { searchContact } from "../../api/api";
 import MaskedTextField from "../MaskedTextField/MaskedTextField";
 
 const validationSchema = yup.object().shape({
-  email: yup.string().email("Invalid email").required("Email is required"),
+  email: yup
+    .string()
+    .email("Invalid email")
+    .max(320, "Email is too long")
+    .required("Email is required"),
   phone: yup
     .string()
     .transform((value) => (value === "" ? null : value))
