@@ -1,6 +1,6 @@
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 
 import css from "./ContactForm.module.css";
@@ -19,6 +19,8 @@ const validationSchema = yup.object().shape({
 });
 
 export const ContactForm = ({ setFoundContacts, setIsLoading }) => {
+  const [isDisabled, setIsDisabled] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -41,7 +43,7 @@ export const ContactForm = ({ setFoundContacts, setIsLoading }) => {
       ...watch(),
       [name]: value,
     };
-    
+
     localStorage.setItem("contactFormData", JSON.stringify(formValues));
   };
 
@@ -50,9 +52,13 @@ export const ContactForm = ({ setFoundContacts, setIsLoading }) => {
 
     setIsLoading(true);
 
+    setIsDisabled(true);
+
     const contacts = await searchContact(data);
 
     setIsLoading(false);
+
+    setIsDisabled(false);
 
     setFoundContacts(contacts);
 
@@ -99,7 +105,11 @@ export const ContactForm = ({ setFoundContacts, setIsLoading }) => {
           {errors.phone && <p className={css.err}>{errors.phone.message}</p>}
         </div>
 
-        <button className={css.btn} type="submit">
+        <button
+          disabled={isDisabled}
+          className={isDisabled ? css.disabledBtn : css.btn}
+          type="submit"
+        >
           Search contact
         </button>
       </form>

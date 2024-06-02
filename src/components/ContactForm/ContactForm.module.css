@@ -26,6 +26,10 @@
   border-radius: 20px;
 }
 
+.btn:hover {
+  border-color: #e76406;
+}
+
 .err {
   color: rgb(205, 78, 78);
   font-size: 13px;
@@ -38,4 +42,14 @@
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.disabledBtn {
+  max-width: 200px;
+  margin: auto;
+  margin-top: 30px;
+  border-radius: 20px;
+  background-color: #303030;
+  color: #ddd;
+  cursor: not-allowed;
 }
