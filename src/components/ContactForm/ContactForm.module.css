@@ -1,0 +1,41 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: auto;
+  margin-bottom: 20px;
+  border: 1px solid #e76406;
+  border-radius: 15px;
+  padding: 15px;
+  padding-top: 30px;
+}
+
+.input {
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  background-color: #303030;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.btn {
+  max-width: 200px;
+  margin: auto;
+  margin-top: 30px;
+  border-radius: 20px;
+}
+
+.err {
+  color: rgb(205, 78, 78);
+  font-size: 13px;
+  position: absolute;
+  margin-bottom: 10px;
+  top: 62px;
+}
+
+.box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
